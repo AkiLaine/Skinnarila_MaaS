@@ -34,8 +34,28 @@ class _VehicleScreenState extends State<VehicleScreen> {
       appBar: AppBar(
         title: Text("Vehicle screen"),
       ),
+      
+      body: Column(
+        children: <Widget>[
+          Container(
+            child: Text(
+                "Our vehicle options",
+                style: TextStyle(fontSize: 24.0),
+              ),
+              margin: EdgeInsets.fromLTRB(0, 30, 0, 5),
+              alignment: Alignment.topCenter,
+          ),
+          Container(
+              child: Text(
+                "Click the plus sign to view availabilities in a map.",
+                style: TextStyle(fontSize: 13.0),
+              ),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+              alignment: Alignment.topCenter,
+          ),
+        ]
+      ),//Column inside body
 
-      body: Container(),
       //Creating the bottom navigation bar and its settings
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 1,
@@ -48,23 +68,23 @@ class _VehicleScreenState extends State<VehicleScreen> {
         //Creating the icons on the bar
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.euro, color: lightOrange),
-              label: ""
+            icon: Icon(Icons.euro, color: lightOrange),
+            label: ""
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.directions_bus_outlined, color: darkOrange),
-              label: ""
+            icon: Icon(Icons.directions_bus_outlined, color: darkOrange),
+            label: ""
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.map_outlined, color: lightOrange),
-              label: ""
+            icon: Icon(Icons.map_outlined, color: lightOrange),
+            label: ""
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_outlined, color: lightOrange),
-              label: ""
+            icon: Icon(Icons.account_circle_outlined, color: lightOrange),
+            label: ""
           ),
-        ],
-      ),
+        ]
+      )//bottomNavigationBar
     );
   }
 }
@@ -82,5 +102,3 @@ class HexColor extends Color {
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
-
-
