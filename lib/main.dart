@@ -102,3 +102,71 @@ class HexColor extends Color {
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
+
+
+class ShapedButton extends StatelessWidget {
+  final GestureTapCallback onTap;
+  final IconData icon;
+  final IconData typeIcon;
+  final Color inputColor;
+  final String title;
+  final String description;
+
+  const ShapedButton(
+      {Key key,
+        this.icon,
+        this.typeIcon,
+        this.title,
+        this.description,
+        this.inputColor,
+        this.onTap})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double size = 150.0;
+    return new InkResponse(
+        onTap: onTap,
+        child: new Container(
+            width: size,
+            height: size,
+            margin: EdgeInsets.all(8),
+            decoration: (new ShapeDecoration(
+                color: inputColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)))),
+            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    new Icon(typeIcon, size: 70, color: Color(0xff828282)),
+                    new SizedBox(width: 20),
+                    new Icon(icon, size: 50, color: Color(0xff828282))
+                  ]),
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    new Container(
+                        padding: EdgeInsets.only(left: 8, right: 8, top: 8),
+                        width: size,
+                        height: 25,
+                        child:
+                        new Text(title,
+                            style: new TextStyle(fontSize: 15, color: Color(0xff828282))))
+                  ]),
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    new Container(
+                        padding: EdgeInsets.only(left: 8, right: 8, top: 4),
+                        width: size,
+                        height: 50,
+                        child: new Text(description,
+                            style: new TextStyle(fontSize: 13, color: Color(0xff828282))))
+                  ])
+            ])));
+  }
+}
